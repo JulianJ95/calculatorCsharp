@@ -18,12 +18,22 @@ namespace calculator
             InitializeComponent();
             TextBoxResult.Text =StartText.ToString();
             TextBoxResult.Enabled = false;
+            
 
 
         }
 
-        private void HelperNumberButtonsToSetValue(string ValueToSet)
+        private void HelperActionsButtonsToSetValue(String ValueToSet)
         {
+            if (TextBoxResult.Text.Contains(ValueToSet))
+                return;
+            TextBoxResult.AppendText(ValueToSet);
+        }
+        private void HelperNumberButtonsToSetValue(string ValueToSet)
+        {//Function that get a string the string is number (0-9)
+            //then check if the text is 0 that mean it's the start 
+            //it's clear and set the number that got 
+            //else it's appead to the text that already in the textbox
 
             if (TextBoxResult.Text == "0")
             {
@@ -82,6 +92,31 @@ namespace calculator
         private void ButtonNumber9_Click(object sender, EventArgs e)
         {
             HelperNumberButtonsToSetValue("9");
+        }
+
+        private void ButtonC_Click(object sender, EventArgs e)
+        {//Clear the Text box 
+            TextBoxResult.Clear();
+        }
+
+        private void ButtonDivision_Click(object sender, EventArgs e)
+        {
+            HelperActionsButtonsToSetValue("/");
+        }
+
+        private void ButtonMultiplication_Click(object sender, EventArgs e)
+        {
+            HelperActionsButtonsToSetValue("X");
+        }
+
+        private void ButtonSum_Click(object sender, EventArgs e)
+        {
+            HelperActionsButtonsToSetValue("+");
+        }
+
+        private void ButtonSubtract_Click(object sender, EventArgs e)
+        {
+            HelperActionsButtonsToSetValue("-");
         }
     }
 }

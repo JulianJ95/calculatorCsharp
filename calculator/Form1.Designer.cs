@@ -201,6 +201,7 @@
             this.ButtonC.TabIndex = 12;
             this.ButtonC.Text = "C";
             this.ButtonC.UseVisualStyleBackColor = true;
+            this.ButtonC.Click += new System.EventHandler(this.ButtonC_Click);
             // 
             // ButtonDivision
             // 
@@ -212,6 +213,7 @@
             this.ButtonDivision.TabIndex = 14;
             this.ButtonDivision.Text = "/";
             this.ButtonDivision.UseVisualStyleBackColor = true;
+            this.ButtonDivision.Click += new System.EventHandler(this.ButtonDivision_Click);
             // 
             // ButtonMultiplication
             // 
@@ -223,6 +225,7 @@
             this.ButtonMultiplication.TabIndex = 15;
             this.ButtonMultiplication.Text = "X";
             this.ButtonMultiplication.UseVisualStyleBackColor = true;
+            this.ButtonMultiplication.Click += new System.EventHandler(this.ButtonMultiplication_Click);
             // 
             // ButtonSum
             // 
@@ -234,6 +237,7 @@
             this.ButtonSum.TabIndex = 16;
             this.ButtonSum.Text = "+";
             this.ButtonSum.UseVisualStyleBackColor = true;
+            this.ButtonSum.Click += new System.EventHandler(this.ButtonSum_Click);
             // 
             // ButtonSubtract
             // 
@@ -245,6 +249,7 @@
             this.ButtonSubtract.TabIndex = 17;
             this.ButtonSubtract.Text = "-";
             this.ButtonSubtract.UseVisualStyleBackColor = true;
+            this.ButtonSubtract.Click += new System.EventHandler(this.ButtonSubtract_Click);
             // 
             // ButtonEqual
             // 
