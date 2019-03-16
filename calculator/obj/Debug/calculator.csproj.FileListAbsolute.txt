@@ -1,7 +1,6 @@
 C:\Users\julia\Desktop\calculator\calculator\bin\Debug\calculator.exe.config
 C:\Users\julia\Desktop\calculator\calculator\bin\Debug\calculator.exe
 C:\Users\julia\Desktop\calculator\calculator\bin\Debug\calculator.pdb
-C:\Users\julia\Desktop\calculator\calculator\obj\Debug\calculator.csprojAssemblyReference.cache
 C:\Users\julia\Desktop\calculator\calculator\obj\Debug\calculator.Form1.resources
 C:\Users\julia\Desktop\calculator\calculator\obj\Debug\calculator.Properties.Resources.resources
 C:\Users\julia\Desktop\calculator\calculator\obj\Debug\calculator.csproj.GenerateResource.cache

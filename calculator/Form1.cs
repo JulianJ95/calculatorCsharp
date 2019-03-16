@@ -19,31 +19,38 @@ namespace calculator
             TextBoxResult.Text =StartText.ToString();
             TextBoxResult.Enabled = false;
             
+            
 
 
         }
 
         private void HelperActionsButtonsToSetValue(String ValueToSet)
         {
-            if (TextBoxResult.Text.Contains(ValueToSet))
+          
+            if (LabelHistory.Text.Contains(ValueToSet))
+            {
                 return;
-            TextBoxResult.AppendText(ValueToSet);
+            }
+            LabelHistory.Text = TextBoxResult.Text + ValueToSet;
+            TextBoxResult.Text = "0";
         }
+
         private void HelperNumberButtonsToSetValue(string ValueToSet)
-        {//Function that get a string the string is number (0-9)
-            //then check if the text is 0 that mean it's the start 
-            //it's clear and set the number that got 
-            //else it's appead to the text that already in the textbox
+        {// TODO : To fix this function  
+
 
             if (TextBoxResult.Text == "0")
             {
                 TextBoxResult.Clear();
                 TextBoxResult.Text = ValueToSet;
+                return;
             }
-
-            else
-                TextBoxResult.AppendText(ValueToSet);
+            TextBoxResult.AppendText(ValueToSet);
+            
+                
         }
+
+        #region EventsOfNumbersButtons
         private void ButtonNumber0_Click(object sender, EventArgs e)
         {
             HelperNumberButtonsToSetValue("0");
@@ -93,12 +100,9 @@ namespace calculator
         {
             HelperNumberButtonsToSetValue("9");
         }
+        #endregion
 
-        private void ButtonC_Click(object sender, EventArgs e)
-        {//Clear the Text box 
-            TextBoxResult.Clear();
-        }
-
+        #region EvetsOfActionsButtons
         private void ButtonDivision_Click(object sender, EventArgs e)
         {
             HelperActionsButtonsToSetValue("/");
@@ -111,12 +115,47 @@ namespace calculator
 
         private void ButtonSum_Click(object sender, EventArgs e)
         {
+            
             HelperActionsButtonsToSetValue("+");
         }
 
         private void ButtonSubtract_Click(object sender, EventArgs e)
         {
+           
+
             HelperActionsButtonsToSetValue("-");
         }
+        #endregion
+
+        #region EvertsOfDeleteButtons
+        private void ButtonC_Click(object sender, EventArgs e)
+        {//Clear the Text box 
+            TextBoxResult.Clear();
+            LabelHistory.Text = "";
+            TextBoxResult.Text = "0";
+        }
+        private void ButtonCE_Click(object sender, EventArgs e)
+        {
+            TextBoxResult.Clear();
+            TextBoxResult.Text = "0";
+        }
+
+        private void ButtonDel_Click(object sender, EventArgs e)
+        {
+            string ResultValue = TextBoxResult.Text;
+            if (ResultValue.Length > 1)
+            {
+                ResultValue = ResultValue.Substring(0, ResultValue.Length - 1);
+            }
+            else
+            {
+                ResultValue = "0";
+            }
+
+            TextBoxResult.Text = ResultValue;
+        }
+        #endregion
+
+       
     }
 }
