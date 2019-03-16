@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace calculator
 {
     public partial class Form1 : Form
@@ -18,15 +19,14 @@ namespace calculator
             InitializeComponent();
             TextBoxResult.Text =StartText.ToString();
             TextBoxResult.Enabled = false;
-            
-            
-
-
+            LabelHistory.Text = "";
+           
+          
         }
 
         private void HelperActionsButtonsToSetValue(String ValueToSet)
         {
-          
+           
             if (LabelHistory.Text.Contains(ValueToSet))
             {
                 return;
@@ -125,6 +125,44 @@ namespace calculator
 
             HelperActionsButtonsToSetValue("-");
         }
+
+        private void ButtonEqual_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(LabelHistory.Text))
+                return;
+
+            string FristNumber = LabelHistory.Text;
+            char Action = FristNumber[FristNumber.Length - 1];
+            FristNumber = FristNumber.Substring(0, FristNumber.Length - 1);
+            string SecondNumber = TextBoxResult.Text;
+
+            double.TryParse(FristNumber, out double FristNum);
+            double.TryParse(SecondNumber, out double SecondNum);
+
+            switch (Action)
+            {
+                case '+':
+                    TextBoxResult.Text = (FristNum + SecondNum).ToString();
+                    break;
+                case '-':
+                    TextBoxResult.Text = (FristNum - SecondNum).ToString();
+                    break;
+                case 'X':
+                    TextBoxResult.Text = (FristNum * SecondNum).ToString();
+                    break;
+                case '/':
+                    if (SecondNum == 0)
+                    {
+                        TextBoxResult.Text = "Can't divde by zero";
+
+                    }
+                    else
+                        TextBoxResult.Text = (FristNum / SecondNum).ToString();
+                    break;
+            }
+            LabelHistory.Text = "";
+
+        }
         #endregion
 
         #region EvertsOfDeleteButtons
@@ -154,8 +192,18 @@ namespace calculator
 
             TextBoxResult.Text = ResultValue;
         }
+
+
+
+
+
         #endregion
 
-       
+        private void ButtonPlusNegative_Click(object sender, EventArgs e)
+        {
+            double.TryParse(TextBoxResult.Text, out double NumberToChange);
+            NumberToChange = NumberToChange * -1;
+            TextBoxResult.Text = NumberToChange.ToString();
+        }
     }
 }

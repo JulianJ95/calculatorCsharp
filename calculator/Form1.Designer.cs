@@ -49,6 +49,7 @@
             this.TextBoxResult = new System.Windows.Forms.TextBox();
             this.ButtonCE = new System.Windows.Forms.Button();
             this.LabelHistory = new System.Windows.Forms.Label();
+            this.ButtonPlusNegative = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ButtonNumber1
@@ -253,6 +254,7 @@
             this.ButtonEqual.TabIndex = 18;
             this.ButtonEqual.Text = "=";
             this.ButtonEqual.UseVisualStyleBackColor = true;
+            this.ButtonEqual.Click += new System.EventHandler(this.ButtonEqual_Click);
             // 
             // ButtonPoint
             // 
@@ -271,7 +273,6 @@
             this.TextBoxResult.Location = new System.Drawing.Point(15, 73);
             this.TextBoxResult.Multiline = true;
             this.TextBoxResult.Name = "TextBoxResult";
-            this.TextBoxResult.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.TextBoxResult.Size = new System.Drawing.Size(497, 76);
             this.TextBoxResult.TabIndex = 20;
             // 
@@ -291,11 +292,23 @@
             // 
             this.LabelHistory.AutoSize = true;
             this.LabelHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.LabelHistory.Location = new System.Drawing.Point(12, 20);
+            this.LabelHistory.Location = new System.Drawing.Point(12, 23);
             this.LabelHistory.Name = "LabelHistory";
             this.LabelHistory.Size = new System.Drawing.Size(35, 38);
             this.LabelHistory.TabIndex = 22;
             this.LabelHistory.Text = "0";
+            // 
+            // ButtonPlusNegative
+            // 
+            this.ButtonPlusNegative.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F);
+            this.ButtonPlusNegative.Location = new System.Drawing.Point(276, 509);
+            this.ButtonPlusNegative.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ButtonPlusNegative.Name = "ButtonPlusNegative";
+            this.ButtonPlusNegative.Size = new System.Drawing.Size(111, 64);
+            this.ButtonPlusNegative.TabIndex = 23;
+            this.ButtonPlusNegative.Text = "+/-";
+            this.ButtonPlusNegative.UseVisualStyleBackColor = true;
+            this.ButtonPlusNegative.Click += new System.EventHandler(this.ButtonPlusNegative_Click);
             // 
             // Form1
             // 
@@ -303,6 +316,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ClientSize = new System.Drawing.Size(527, 584);
+            this.Controls.Add(this.ButtonPlusNegative);
             this.Controls.Add(this.LabelHistory);
             this.Controls.Add(this.ButtonCE);
             this.Controls.Add(this.TextBoxResult);
@@ -354,6 +368,7 @@
         private System.Windows.Forms.TextBox TextBoxResult;
         private System.Windows.Forms.Button ButtonCE;
         private System.Windows.Forms.Label LabelHistory;
+        private System.Windows.Forms.Button ButtonPlusNegative;
     }
 }
 
