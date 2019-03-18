@@ -266,6 +266,7 @@
             this.ButtonPoint.TabIndex = 19;
             this.ButtonPoint.Text = ".";
             this.ButtonPoint.UseVisualStyleBackColor = true;
+            this.ButtonPoint.Click += new System.EventHandler(this.ButtonPoint_Click);
             // 
             // TextBoxResult
             // 

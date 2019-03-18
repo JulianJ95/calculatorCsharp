@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -20,8 +21,8 @@ namespace calculator
             TextBoxResult.Text =StartText.ToString();
             TextBoxResult.Enabled = false;
             LabelHistory.Text = "";
-           
-          
+            
+
         }
 
         private void HelperActionsButtonsToSetValue(String ValueToSet)
@@ -31,14 +32,21 @@ namespace calculator
             {
                 return;
             }
+            if(TextBoxResult.Text.Remove(0,TextBoxResult.Text.Length-1)==".")
+            {
+                LabelHistory.Text = TextBoxResult.Text.Remove(TextBoxResult.Text.Length - 1) + ValueToSet;
+                return;
+            }
             LabelHistory.Text = TextBoxResult.Text + ValueToSet;
-            TextBoxResult.Text = "0";
+            
+            
         }
 
         private void HelperNumberButtonsToSetValue(string ValueToSet)
-        {// TODO : To fix this function  
+        {// TODO : To fix this function
+            
 
-
+            
             if (TextBoxResult.Text == "0")
             {
                 TextBoxResult.Clear();
@@ -49,13 +57,14 @@ namespace calculator
             
                 
         }
-
+        
         #region EventsOfNumbersButtons
+        // Events for all number buttons (0-9)
+
         private void ButtonNumber0_Click(object sender, EventArgs e)
         {
             HelperNumberButtonsToSetValue("0");
         }
-
         private void ButtonNumber1_Click(object sender, EventArgs e)
         {
             HelperNumberButtonsToSetValue("1");
@@ -103,6 +112,7 @@ namespace calculator
         #endregion
 
         #region EvetsOfActionsButtons
+        //Events for all action buttons (-,+,/,X)
         private void ButtonDivision_Click(object sender, EventArgs e)
         {
             HelperActionsButtonsToSetValue("/");
@@ -166,6 +176,7 @@ namespace calculator
         #endregion
 
         #region EvertsOfDeleteButtons
+        //Events for delete button (C , CE , DEL)
         private void ButtonC_Click(object sender, EventArgs e)
         {//Clear the Text box 
             TextBoxResult.Clear();
@@ -193,10 +204,6 @@ namespace calculator
             TextBoxResult.Text = ResultValue;
         }
 
-
-
-
-
         #endregion
 
         private void ButtonPlusNegative_Click(object sender, EventArgs e)
@@ -205,5 +212,13 @@ namespace calculator
             NumberToChange = NumberToChange * -1;
             TextBoxResult.Text = NumberToChange.ToString();
         }
+
+        private void ButtonPoint_Click(object sender, EventArgs e)
+        {
+            if (TextBoxResult.Text.Contains("."))
+                return;
+            TextBoxResult.AppendText(".");
+        }
+
     }
 }
