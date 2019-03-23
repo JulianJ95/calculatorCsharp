@@ -21,10 +21,17 @@ namespace calculator
             TextBoxResult.Text =StartText.ToString();
             TextBoxResult.Enabled = false;
             LabelHistory.Text = "";
-            
+           
+
+
 
         }
 
+        private bool CheckIfTextBoxResultIsString()
+        {//Return true if the textbox is string  else return false
+            //that's mean in the TextBoxResult include that string (Can't divde by zero)
+            return (!(int.TryParse(TextBoxResult.Text, out int NotRelevant)));
+        }
         private void HelperActionsButtonsToSetValue(String ValueToSet)
         {
            
@@ -37,20 +44,32 @@ namespace calculator
                 LabelHistory.Text = TextBoxResult.Text.Remove(TextBoxResult.Text.Length - 1) + ValueToSet;
                 return;
             }
+            if(!(TextBoxResult.Text.Contains(".")) && CheckIfTextBoxResultIsString())
+            {
+                TextBoxResult.Clear();
+                TextBoxResult.Text = "0";
+                LabelHistory.Text = "";
+                return;
+            }
+            
             LabelHistory.Text = TextBoxResult.Text + ValueToSet;
-            
-            
+            TextBoxResult.Text = "0";
+
+
         }
 
         private void HelperNumberButtonsToSetValue(string ValueToSet)
-        {// TODO : To fix this function
-            
-
-            
+        {
+              
             if (TextBoxResult.Text == "0")
             {
                 TextBoxResult.Clear();
                 TextBoxResult.Text = ValueToSet;
+                return;
+            }
+            if (!(TextBoxResult.Text.Contains(".")) && CheckIfTextBoxResultIsString())
+            {
+                TextBoxResult.Text = "0";
                 return;
             }
             TextBoxResult.AppendText(ValueToSet);
@@ -116,6 +135,7 @@ namespace calculator
         private void ButtonDivision_Click(object sender, EventArgs e)
         {
             HelperActionsButtonsToSetValue("/");
+            
         }
 
         private void ButtonMultiplication_Click(object sender, EventArgs e)
@@ -132,7 +152,6 @@ namespace calculator
         private void ButtonSubtract_Click(object sender, EventArgs e)
         {
            
-
             HelperActionsButtonsToSetValue("-");
         }
 
@@ -140,7 +159,7 @@ namespace calculator
         {
             if (string.IsNullOrEmpty(LabelHistory.Text))
                 return;
-
+            
             string FristNumber = LabelHistory.Text;
             char Action = FristNumber[FristNumber.Length - 1];
             FristNumber = FristNumber.Substring(0, FristNumber.Length - 1);
@@ -179,12 +198,23 @@ namespace calculator
         //Events for delete button (C , CE , DEL)
         private void ButtonC_Click(object sender, EventArgs e)
         {//Clear the Text box 
+            if (!(TextBoxResult.Text.Contains(".")) && CheckIfTextBoxResultIsString())
+            {
+                TextBoxResult.Text = "0";
+                return;
+            }
+
             TextBoxResult.Clear();
             LabelHistory.Text = "";
             TextBoxResult.Text = "0";
         }
         private void ButtonCE_Click(object sender, EventArgs e)
         {
+            if (!(TextBoxResult.Text.Contains(".")) && CheckIfTextBoxResultIsString())
+            {
+                TextBoxResult.Text = "0";
+                return;
+            }
             TextBoxResult.Clear();
             TextBoxResult.Text = "0";
         }
@@ -192,6 +222,12 @@ namespace calculator
         private void ButtonDel_Click(object sender, EventArgs e)
         {
             string ResultValue = TextBoxResult.Text;
+            if (!(TextBoxResult.Text.Contains(".")) && CheckIfTextBoxResultIsString())
+            {
+                TextBoxResult.Text = "0";
+                return;
+            }
+
             if (ResultValue.Length > 1)
             {
                 ResultValue = ResultValue.Substring(0, ResultValue.Length - 1);
@@ -215,7 +251,7 @@ namespace calculator
 
         private void ButtonPoint_Click(object sender, EventArgs e)
         {
-            if (TextBoxResult.Text.Contains("."))
+            if (TextBoxResult.Text.Contains(".")||CheckIfTextBoxResultIsString())
                 return;
             TextBoxResult.AppendText(".");
         }

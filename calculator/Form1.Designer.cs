@@ -339,7 +339,9 @@
             this.Controls.Add(this.ButtonNumber7);
             this.Controls.Add(this.ButtonNumber4);
             this.Controls.Add(this.ButtonNumber1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "calculator";
             this.ResumeLayout(false);
